@@ -35,7 +35,7 @@ class FeatureEngineering:
         # Cap outliers in numerical variables
         outlier_detector = OutlierDetector(IQROutlierDetection())
         df[numerical_variables] = outlier_detector.handle_outliers(df[numerical_variables], method='cap')
-
+        
         # Transform numerical variables
         standard_scaling_variables = ['paid_at_time']
         log_transform_variables = [x for x in numerical_variables if x not in standard_scaling_variables]

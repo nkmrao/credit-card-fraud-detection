@@ -10,8 +10,9 @@ from steps.step01_preprocessing import PreProcessorStep
 from steps.step02a_features_creation import FeaturesCreation
 from steps.step02b_features_selection import FeaturesSelection
 from steps.step03_feature_engineering import FeatureEngineering
+from steps.step05_model_pipeline import ModelPipeline
 
-def modelling_pipeline():
+def modelling_process(run_pipeline):
     
     print('\nModelling pipeline started')
 
@@ -35,8 +36,14 @@ def modelling_pipeline():
     print('Running feature engineering step...')
     FeatureEngineering().run()
 
-def main():
-    modelling_pipeline()
+    if run_pipeline:
+        # Modelling Pipeline
+        print()
+        print('Running modelling pipeline step...')
+        ModelPipeline().run()
+
+def main(run_pipeline=False):
+    modelling_process(run_pipeline)
 
 if __name__ == '__main__':
-    main()
+    main(run_pipeline=True)
